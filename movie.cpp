@@ -42,7 +42,7 @@ string Movie::getTitle()
     return title;
 }
 
-string Movie::getdirector()
+string Movie::getDirector()
 {
     return director;
 }

@@ -1,6 +1,6 @@
 #include "customer.h"
 
-Customer::Customer() : id(0), firstName(""), lastName(""
+Customer::Customer() : id(0), firstName(""), lastName("")
 {
     commandHistory.reserve(10);
 }
@@ -17,7 +17,10 @@ Customer::Customer(const Customer& rhs)
     lastName = rhs.lastName;
 }
 
-void Customer::setData(istream7 infile)
+Customer::~Customer()
+{}
+
+void Customer::setData(istream& infile)
 {
     infile >> id;
     if (infile.eof())
@@ -47,6 +50,7 @@ string Customer::getFirstName() const
 {
     return firstName;
 }
+
 
 void Customer::displayCustomerHistory() const
 {

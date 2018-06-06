@@ -3,15 +3,19 @@ controls all of the different genres of movies
 is stored in the inventory
 the factory can create a movie object
 */
+
+#ifndef MOVIE_H
+#define MOVIE_H
 #include <iostream>
 #include <ostream>
 #include <string>
+#include "inventory.h"
 using namespace std;
-class Movie
+class Movie : public Inventory
 {
 
 public:
-{
+
     // constructors and destructor
     Movie();
     Movie(const Movie& rhs);
@@ -49,10 +53,11 @@ public:
     */
     virtual void setData(istream& infile);
 
-}
-private:
+
+protected:
     string title;
     string director;
     int year;
 
 };
+#endif

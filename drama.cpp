@@ -22,11 +22,12 @@ void Drama::display() const
     << setw(5) << year << endl;
 }
 
-void Drama::displayHeader() const{
-    cout << "AVAIL DIRECTOR                 TITLE
-    YEAR " << endl;
-    cout << "--------------------------------------------------------------
-    -----------------" << endl;
+void Drama::displayHeader() const
+{
+    cout << "AVAIL TITLE                DIRECTOR            YEAR " << endl;
+    cout << "--------------------------------------------------------------"
+    << "-----------------" << endl;
+
 }
 
 void Drama::setData(istream& infile)

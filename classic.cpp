@@ -28,10 +28,9 @@ void Classic::display() const
 }
 
 void Classic::displayHeader() const{
-    cout << "AVAIL TITLE                DIRECTOR
-    YEAR " << endl;
-    cout << "--------------------------------------------------------------
-    -----------------" << endl;
+    cout << "AVAIL TITLE                DIRECTOR            YEAR " << endl;
+    cout << "--------------------------------------------------------------"
+    << "-----------------" << endl;
 }
 
 void Classic::setData(istream& infile)
@@ -41,8 +40,8 @@ void Classic::setData(istream& infile)
     getline(infile, director, ',');
     infile.get();
     getline(infile, title, ',');
-    infile.get()
-    infilke >> firstName >> lName;
+    infile.get();
+    infile >> firstName >> lName;
     infile >> month >>  year;
 }
 

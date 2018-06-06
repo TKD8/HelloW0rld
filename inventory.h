@@ -1,6 +1,9 @@
+#ifndef INVENTORY_H
+#define INVENTORY_H
 #include <iostream>
 #include <ostream>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 class Inventory
@@ -16,8 +19,8 @@ public:
     virtual void setData(istream& infile) = 0;
     virtual void setData2(istream&) = 0;
 
-    virtual string getItem() const;
-    void setMaxCopies();
+
+    void setMaxCopies(const int maxCopy);
     void increaseCopies();
     void decreaseCopies();
     int getMaxAmount();
@@ -32,3 +35,5 @@ private:
     int stockNum;
 
 };
+
+#endif

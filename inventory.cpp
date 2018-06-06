@@ -5,7 +5,7 @@ Inventory::Inventory() : stockNum(-1), maxStock(0)
 
 }
 
-Inventory::Inventory(const& rhs)
+Inventory::Inventory(const Inventory& rhs)
 {
 
 }

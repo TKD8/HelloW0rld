@@ -8,7 +8,7 @@ Comedy::Comedy() : Movie(), GENRE("Comedy")
 Comedy::Comedy(const Comedy& rhs)
 {
     title = rhs.title;
-    author = rhs.author;
+    director = rhs.director;
     year = rhs.year;
 }
 
@@ -18,15 +18,16 @@ Comedy::~Comedy()
 
 void Comedy::display() const
 {
-    cout << left << setw(22) << title << " " << setw(18) << author << " "
+    cout << left << setw(22) << title << " " << setw(18) << director << " "
     << setw(5) << year << endl;
 }
 
-void Comedy::displayHeader() const{
-    cout << "AVAIL TITLE                DIRECTOR
-    YEAR " << endl;
-    cout << "--------------------------------------------------------------
-    -----------------" << endl;
+void Comedy::displayHeader() const
+{
+    cout << "AVAIL TITLE                DIRECTOR            YEAR " << endl;
+    cout << "--------------------------------------------------------------"
+    << "-----------------" << endl;
+
 }
 
 void Comedy::setData(istream& infile)
@@ -35,7 +36,7 @@ void Comedy::setData(istream& infile)
     getline(infile, title, ',');
 
     infile.get();
-    getline(infile, author, ',');
+    getline(infile, director, ',');
 
     infile.get();
     infile >> year;

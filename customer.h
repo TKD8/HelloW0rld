@@ -18,7 +18,7 @@ public:
 
     // takes in the data file for customers and then sets its variables
     // with the corresponding customer files
-    void setData(istream&)
+    void setData(istream&);
 
     // simple getter methods to get Customer information
     int getCID() const;
@@ -38,8 +38,8 @@ public:
     void addCommand(Command);
     virtual void display() const;
     // overloaded operators to compare customers
-    virtual bool operator==(const Patron& rhs) const;
-    virtual bool operator!=(const Patron& rhs) const;
+    virtual bool operator==(const Customer& rhs) const;
+    virtual bool operator!=(const Customer& rhs) const;
 private:
     // id of the customer
     int id;
