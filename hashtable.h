@@ -1,5 +1,6 @@
 class Movie;
 class Command;
+const int MAX_CMD = 26;
 #include "command.h"
 #include "drama.h"
 #include "comedy.h"
@@ -11,7 +12,7 @@ class Command;
 #include <string>
 using namespace std;
 
-class hashTable
+class HashTable
 {
 public:
     // Constructor and destructor
@@ -19,9 +20,9 @@ public:
     // correspond with the specific genre or
     // specific commands that the data translates to after
     // convToSubscript
-    hashTable();
+    HashTable();
     // clears the array
-    ~hashTable();
+    ~HashTable();
     // Create empty object commands
     // both methods follow this pseudo:
     /*

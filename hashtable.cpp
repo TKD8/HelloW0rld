@@ -1,4 +1,4 @@
-#include "factory.h"
+#include "hashtable.h"
 
 //----------------------------------------------------------------------------
 // Default constructor: Initializes the inventory and sets up each movie genre
@@ -45,7 +45,7 @@ HashTable::~HashTable()
 
 //----------------------------------------------------------------------------
 // getBookType: gets the movie Type of the object and returns it back to the user
-string HashTable::getBookType(char ch)
+string HashTable::getmovieType(char ch)
 {
     return movieType[hash(ch)];
 }
@@ -54,7 +54,7 @@ string HashTable::getBookType(char ch)
 // createBook: creates an empty movie object for the Library. First it checks
 // if the inputted char from the data file corresponds to any of the genre
 // arrays and if it isnt null. If not, then it creates the empty movie genre obj
-Inventory *HashTable::createBook(char ch, istream& infile)
+Inventory *HashTable::creatMovie(char ch, istream& infile)
 {
     string tmp;
 
