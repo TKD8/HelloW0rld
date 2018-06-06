@@ -45,7 +45,7 @@ HashTable::~HashTable()
 
 //----------------------------------------------------------------------------
 // getBookType: gets the movie Type of the object and returns it back to the user
-string HashTable::getmovieType(char ch)
+string HashTable::getMovieType(char ch)
 {
     return movieType[hash(ch)];
 }
