@@ -16,9 +16,10 @@ HashTable::HashTable()
     cmdInventory[7] = new History();
     cmdInventory[17] = new Return();
     movieType[3] = "DVD";
+	storeMovie[2] = new Classic();
     storeMovie[3] = new Drama();
     storeMovie[5] = new Comedy();
-    storeMovie[2] = new Classic();
+
 
 }
 

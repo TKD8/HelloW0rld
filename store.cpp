@@ -35,13 +35,16 @@ Store::~Store()
 // where the hash makes the corresponding movie object
 void Store::createInventory(istream& infile)
 {
+    int i = 0;
     char movieChar = ' ';
     // do until end of file
     for(;;)
     {
         // get movie char command
         infile >> movieChar;
-
+        cout << movieChar << endl;
+        cout << i << endl;
+        i++;
         if (infile.eof())
             break;
         // create the corresponding movie (if possible)
@@ -50,6 +53,8 @@ void Store::createInventory(istream& infile)
         if (movieInventory != NULL)
         {
             movieInventory->setData(infile);
+            cout << movieInventory->getItem() << endl;
+
 			bool inInventory = inventoryList[hash.convToSubscript(movieChar)]
             .insert(movieInventory, 10);
 
@@ -60,8 +65,6 @@ void Store::createInventory(istream& infile)
                 cout << inInventory << endl;
 				cout << movieInventory->getItem();
                 delete movieInventory;
-                cout << "Not inserted" <<  endl;
-                break;
 
             }
             // test code
@@ -124,17 +127,12 @@ void Store::doCommands(istream& infile) {
 		infile >> cmdCh;
 		if (infile.eof()) break; //check for end of file
         // display command
-		if (cmdCh == 'S')
+		if (cmdCh == 'I')
         {
 			displayCatalog();
 			cmdCh = ' ';
 		}
         // invalid format type defined by specs
-		else if (cmdCh == 'Z')
-		{
-			cout << "ERROR: Invalid format type Z";
-			cout << endl;
-		}
 		else if (infile.get() == EOL)
 			cmdCh = ' ';
 		else
@@ -161,7 +159,7 @@ void Store::doCommands(istream& infile) {
 
                         // take in movie command and movie type command
 						infile >> movieCh;
-						tempItem = hash.createMovie (movieCh, infile);
+						tempItem = hash.createMovie(movieCh, infile);
 						infile >> bTC;
 						movieType = hash.getMovieType(bTC);
                         // movie genre exists

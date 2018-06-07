@@ -9,7 +9,7 @@ public:
     Classic();
     Classic(const Classic& rhs);
     ~Classic();
-    // Displays the book info to the user
+    // Displays the movie info to the user
     virtual void display() const;
     virtual void displayHeader() const;
     // takes in the text file and sets the data of the Movie object
@@ -29,7 +29,7 @@ public:
     virtual Inventory * create();
 
 private:
-    // genre tag for the book
+    // genre tag for the movie
     const string GENRE;
     // tags for the classic genre
     int month;

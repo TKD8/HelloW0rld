@@ -23,12 +23,13 @@ Classic::~Classic()
 void Classic::display() const
 {
     cout << left << setw(22) << title << " " <<  setw(3) <<
-    month << " " << setw(5) << year << " "
-    << firstName << lName << endl;
+    director << " " << setw(5) << month << year << " "
+    << firstName << " " << lName << endl;
 }
 
 void Classic::displayHeader() const{
-    cout << "AVAIL TITLE                DIRECTOR            YEAR " << endl;
+    cout << "AVAIL TITLE                DIRECTOR        MO YEAR " <<
+     "ACTOR   "  << endl;
     cout << "--------------------------------------------------------------"
     << "-----------------" << endl;
 }
