@@ -35,16 +35,12 @@ Store::~Store()
 // where the hash makes the corresponding movie object
 void Store::createInventory(istream& infile)
 {
-    int i = 0;
     char movieChar = ' ';
     // do until end of file
     for(;;)
     {
         // get movie char command
         infile >> movieChar;
-        cout << movieChar << endl;
-        cout << i << endl;
-        i++;
         if (infile.eof())
             break;
         // create the corresponding movie (if possible)
@@ -53,7 +49,6 @@ void Store::createInventory(istream& infile)
         if (movieInventory != NULL)
         {
             movieInventory->setData(infile);
-            cout << movieInventory->getItem() << endl;
 
 			bool inInventory = inventoryList[hash.convToSubscript(movieChar)]
             .insert(movieInventory, 10);
