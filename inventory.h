@@ -25,6 +25,7 @@ public:
     void decreaseCopies();
     int getMaxAmount();
     int getCurAmount();
+    virtual string getItem() const = 0;
 
     virtual bool operator==(const Inventory&) const = 0;
     virtual bool operator<(const Inventory&) const = 0;

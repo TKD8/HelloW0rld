@@ -54,7 +54,7 @@ string HashTable::getMovieType(char ch)
 // createBook: creates an empty movie object for the Library. First it checks
 // if the inputted char from the data file corresponds to any of the genre
 // arrays and if it isnt null. If not, then it creates the empty movie genre obj
-Inventory *HashTable::creatMovie(char ch, istream& infile)
+Inventory *HashTable::createMovie(char ch, istream& infile)
 {
     string tmp;
 

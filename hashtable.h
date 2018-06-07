@@ -31,11 +31,11 @@ public:
     if its null then return null
     otherwise return the array at the hashed int and create a new order or movie
     */
-    Inventory *creatMovie(char, istream&);
+    Inventory *createMovie(char, istream&);
     Command *createCommand(char, istream&);
     // Gets array int from method
     int convToSubscript(char);
-    // gets the bookType from the object
+    // gets the movieType from the object
     string getMovieType(char);
 
 private:
