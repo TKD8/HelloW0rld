@@ -32,6 +32,10 @@ void Drama::displayHeader() const
 
 void Drama::setData(istream& infile)
 {
+
+    infile.get();
+    getline(infile, stock, ',');
+
     infile.get();
     getline(infile, director , ',');
 

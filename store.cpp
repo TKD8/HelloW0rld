@@ -102,104 +102,100 @@ void Store::createCustomers(istream& infile)
     }
 }
 
+
+
 //---------------------------------------------------------------------------
 // doCommands: take in an input file and executes the commands in the text
 // file. Assumes the input is correct
-void Store::doCommands(istream& infile) {
-	char cmdCh = ' ';
-	char movieCh = ' ';
-	char bTC = ' ';
+void Store::doCommands(istream& infile)
+{
 	int custID = 0;
 	bool found = false;
 	string movieType = "";
 	char EOL = '\n';
-	Inventory *itemLoc = NULL;
-	Customer *tempCustomer = NULL;
-	Inventory *tempItem = NULL;
 
-	for (;;)
-    {
+    Inventory * itemLoc = NULL;
+	Customer * tempCust = NULL;
+	Inventory *  tempItem = NULL;
+
+    char cmdCh = ' ';
+    char movCh = ' ';
+    char movTCH = ' ';
+
+	for (;;){
 		infile >> cmdCh;
-		if (infile.eof()) break; //check for end of file
-        // display command
-		if (cmdCh == 'I')
-        {
+		if (infile.eof()) break;
+
+		if (cmdCh == 'I'){
 			displayCatalog();
 			cmdCh = ' ';
 		}
-        // invalid format type defined by specs
 		else if (infile.get() == EOL)
 			cmdCh = ' ';
-		else
-        {
-				Command * processedTran = hash
-				.createCommand(cmdCh, infile);
-            // if command char is legit
-			if (processedTran != NULL)
-            {
+		else {
+			Command  * processedTran = hash
+							.createCommand(cmdCh, infile);
+
+			if (processedTran != NULL){
 				infile >> custID;
 
-
 				if (infile.eof()) break;
-                // customer exists
-				if (customerFound(custID))
-				{
-					tempCustomer = &customerList[custID];
-                    // set up the history of the customer
-					bool isHistory = processedTran->
-						setData(movieType, itemLoc, tempCustomer);
-                    // check the file again
-					if (infile.get() != EOL && isHistory)
-                    {
 
-                        // take in movie command and movie type command
-						infile >> movieCh;
-						tempItem = hash.createMovie(movieCh, infile);
-						infile >> bTC;
-						movieType = hash.getMovieType(bTC);
-                        // movie genre exists
-						if (movieType != "")
-						{
-                            // set the data for the movie and see if it's
-                            // in the list
-							if (tempItem != NULL)
-							{
+				if (customerFound (custID)){
+					tempCust = &customerList[custID];
+
+					bool isHistory = processedTran->
+								setData(movieType, itemLoc, tempCust);
+
+					if (infile.get() != EOL && isHistory){
+
+						infile >> movTCH;
+
+						movieType = hash .getMovieType(movTCH);
+
+
+						if (movieType != ""){
+
+							infile >> movCh;
+
+							tempItem = hash .createMovie(movCh, infile);
+
+							if (tempItem != NULL){
 								tempItem->setData2(infile);
 
-								found = inventoryList[hash.
-									convToSubscript(movieCh)].
+								found = inventoryList[hash .
+									convToSubscript(movCh)].
 									retrieve(*tempItem, itemLoc);
-                                // error if movie not in list
+
 								if (found == false)
 								{
-									cout << "ERROR: Invalid Movie Request!: "
+									cout << "ERROR: Invalid Movie Request!"
 										<< tempItem->getItem() << endl;
 								}
+
 								delete tempItem;
 								tempItem = NULL;
-                                // check again
-								bool found2 = processedTran->
-									setData(movieType, itemLoc, tempCustomer);
 
-								if ((found && found2) && movieType != "")
-                                {
+								bool found2 = processedTran->
+									setData(movieType, itemLoc, tempCust);
+
+								if ((found && found2) && movieType != ""){
 									customerList[custID]
 										.addCommand(*processedTran);
 
 								}
 								delete processedTran;
 								processedTran = NULL;
-
 							}
-						else
-						{
-								cout << "ERROR: Genre: " << movieCh
-									<< " not Found!" << endl;
+							else{
+								cout << "ERROR: " << movCh
+									 << " Genre not Found!" << endl;
 
 								if (processedTran != NULL)
 									delete processedTran;
 								processedTran = NULL;
-						}
+							}
+
 
 							string temp;
 							getline(infile, temp, EOL);
@@ -207,29 +203,27 @@ void Store::doCommands(istream& infile) {
 							tempItem = NULL;
 
 						}
-						else
-						{
+						else{
 							string temp;
 							getline(infile, temp, EOL);
 
-							cout << "ERROR: Invalid Movie Genre " << bTC <<
-                            endl;
+							cout << "ERROR: Bad code " << movTCH << endl;
 
 							if (processedTran != NULL)
 								delete processedTran;
 							processedTran = NULL;
 						}
+
 					}
-					else
-                    {
+					else {
 						if (processedTran != NULL)
 							delete processedTran;
 						processedTran = NULL;
 					}
+
 				}
-				else
-                {
-					cout << "Error: Invalid Customer ID " << custID << endl;
+				else {
+					cout << "Error: Bad customer ID " << custID << endl;
 
 					if (processedTran != NULL)
 						delete processedTran;
@@ -240,7 +234,7 @@ void Store::doCommands(istream& infile) {
 				}
 			}
 			else {
-				cout << "ERROR: Invalid Command Code " << cmdCh << endl;
+				cout << "ERROR: Invalid command " << cmdCh << endl;
 
 				if (processedTran != NULL)
 					delete processedTran;
@@ -251,9 +245,9 @@ void Store::doCommands(istream& infile) {
 		found = false;
 		custID = 0;
 		itemLoc = NULL;
-		tempCustomer = NULL;
+		tempCust = NULL;
 		tempItem = NULL;
-	}
+}//end for
 }
 
 //---------------------------------------------------------------------------

@@ -25,13 +25,13 @@ void Inventory::setMaxCopies(const int maxCopy)
 void Inventory::increaseCopies()
 {
     if (stockNum != maxStock)
-        stockNum++;
+        maxStock++;
 }
 
 void Inventory::decreaseCopies()
 {
     if (stockNum != 0)
-        stockNum--;
+        maxStock--;
 }
 int Inventory::getMaxAmount()
 {
@@ -40,5 +40,5 @@ int Inventory::getMaxAmount()
 
 int Inventory::getCurAmount()
 {
-    return maxStock - stockNum;
+    return maxStock;
 }

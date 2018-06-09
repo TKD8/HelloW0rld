@@ -58,6 +58,7 @@ protected:
     string title;
     string director;
     int year;
+    string stock;
 
 };
 #endif

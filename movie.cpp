@@ -28,6 +28,9 @@ void Movie::displayHeader() const{
 void Movie::setData(istream& infile)
 {
     infile.get();
+    getline(infile, stock, ',');
+
+    infile.get();
     getline(infile, director, ',');
 
     infile.get();

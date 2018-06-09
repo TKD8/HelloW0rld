@@ -22,25 +22,31 @@ Classic::~Classic()
 
 void Classic::display() const
 {
-    cout << left << setw(22) << title << " " <<  setw(3) <<
-    director << " " << setw(5) << month << year << " "
-    << firstName << " " << lName << endl;
+    cout << left << setw(22) << title << " "
+		 << setw(18) << director << " "
+		 << setw(3) << month << " "
+		 << setw(5) << year << " "
+        << firstName << " " << lName << endl;
 }
 
 void Classic::displayHeader() const{
-    cout << "AVAIL TITLE                DIRECTOR        MO YEAR " <<
-     "ACTOR   "  << endl;
-    cout << "--------------------------------------------------------------"
-    << "-----------------" << endl;
+    cout << "AVAIL TITLE           DIRECTOR               MO YEAR " <<
+		"    ACTOR " << endl;
+	cout <<
+	"---------------------------------------------------------------------"
+<< endl;
 }
 
 void Classic::setData(istream& infile)
 {
-
+    infile.get();
+    getline(infile, stock, ',');
     infile.get();
     getline(infile, director, ',');
     infile.get();
     getline(infile, title, ',');
+    if (title.size() > 18)
+        title.resize(18);
     infile.get();
     infile >> firstName >> lName;
     infile >> month >>  year;

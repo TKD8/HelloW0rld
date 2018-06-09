@@ -33,10 +33,13 @@ void Comedy::displayHeader() const
 void Comedy::setData(istream& infile)
 {
     infile.get();
-    getline(infile, title, ',');
+    getline(infile, stock, ',');
 
     infile.get();
     getline(infile, director, ',');
+
+    infile.get();
+    getline(infile, title, ',');
 
     infile.get();
     infile >> year;
